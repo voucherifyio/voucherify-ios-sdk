@@ -1,42 +1,31 @@
-#
-# Be sure to run `pod lib lint VoucherifySwiftSdk.podspec' to ensure this is a
-# valid spec before submitting.
-#
-# Any lines starting with a # are optional, but their use is encouraged
-# To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html
-#
 
 Pod::Spec.new do |s|
   s.name             = 'VoucherifySwiftSdk'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of VoucherifySwiftSdk.'
-
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
+  s.summary          = 'Swift SDK for Voucherify to validate a voucher on client side.'
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+    Swift SDK for Voucherify to validate a voucher on client side.
+
+    Voucherify has a new platform that will help your team automate voucher campaigns. It does this by providing composable API and the marketer-friendly interface that increases teams' productivity:
+
+    - roll-out thousands of vouchers in minutes instead of weeks,
+    - check status or disable every single promo code in real time,
+    - track redemption history and build reports on the fly.
+
+    You can find full documentation on voucherify.readme.io.
                        DESC
 
-  s.homepage         = 'https://github.com/<GITHUB_USERNAME>/VoucherifySwiftSdk'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
+  s.homepage         = 'http://www.voucherify.io/'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'marcin.polak' => 'mpolak87@gmail.com' }
-  s.source           = { :git => 'https://github.com/<GITHUB_USERNAME>/VoucherifySwiftSdk.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.author           = { 'marcin.polak' => 'marcin.polak@rspective.pl' }
+  s.source           = { :git => 'https://github.com/voucherifyio/voucherify-ios-sdk.git', :tag => s.version.to_s }
+  s.social_media_url = 'https://twitter.com/hashtag/voucherify'
 
   s.ios.deployment_target = '8.0'
 
   s.source_files = 'VoucherifySwiftSdk/Classes/**/*'
-  
-  # s.resource_bundles = {
-  #   'VoucherifySwiftSdk' => ['VoucherifySwiftSdk/Assets/*.png']
-  # }
+  s.dependency 'Alamofire', '~> 3.4'
+  s.dependency 'ObjectMapper', '~> 1.3'
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
 end
