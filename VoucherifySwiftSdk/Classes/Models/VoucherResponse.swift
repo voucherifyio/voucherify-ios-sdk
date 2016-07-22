@@ -11,6 +11,8 @@ public struct VoucherResponse: Mappable {
     public var valid: Bool?
     public var discount: Discount?
     public var trackingId: String?
+    public var gift: Gift?
+    public var reason: String?
 
     public init?(_ map: Map) {
         mapping(map)
@@ -20,6 +22,8 @@ public struct VoucherResponse: Mappable {
         valid       <- map["valid"]
         discount    <- map["discount"]
         trackingId  <- map["tracking_id"]
+        gift        <- map["gift"]
+        reason      <- map["reason"]
     }
 
 }

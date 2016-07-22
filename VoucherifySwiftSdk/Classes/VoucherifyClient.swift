@@ -82,17 +82,20 @@ public class VoucherifyClient {
 
 }
 
+//MARK: Voucher validation
+
 extension VoucherifyClient {
 
     /**
-     Mthod which allows to validate voucher code
+     Method which allows to validate a voucher based on its code and gift amount
      - parameter code: Voucher's code which we want to validate
      - parameter completion: response callback function
      */
-    public func validateVoucher(code: String, completion: (response: VoucherResponse?) -> Void) {
+    public func validateVoucher(code: String, amount: Int? = nil, completion: (response: VoucherResponse?) -> Void) {
         var params = getBaseQueryParams()
 
         params[HttpQueryParamName.CODE] = code
+        params[HttpQueryParamName.GIFT_AMOUNT] = amount
 
         request(VoucherifyRouter.VALIDATE_VOUCHER(params)) { (response) in
             completion(response: self.handleJsonResponse(response))

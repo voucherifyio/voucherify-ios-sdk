@@ -1,7 +1,7 @@
 Voucherify-Swift-SDK
 ======================
 
-###Version: 0.1.0
+###Version: 0.2.0
 
 Swift SDK for Voucherify to validate a voucher on client side.
 
@@ -43,6 +43,12 @@ it, simply add the following line to your Podfile:
 ```ruby
 pod "VoucherifySwiftSdk"
 ```
+
+Current list of features
+=====
+- validate a voucher based on its code and optionally order amount (required for gift vouchers)
+- validate a gift voucher. This requires to pass an amount that is intended to be withdrawn from the voucher.
+  Order amount have to be expressed in cents, as an integer. For example $22.50 should be provided as 2250
 
 Usage
 =====

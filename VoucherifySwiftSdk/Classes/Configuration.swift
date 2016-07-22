@@ -56,6 +56,7 @@ public struct HttpHeader {
 
 public struct HttpQueryParamName {
     static let CODE = "code"
+    static let GIFT_AMOUNT = "amount"
     static let TRACKING_ID = "tracking_id"
     static let CHANNEL = "channel"
 }
