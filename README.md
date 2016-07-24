@@ -53,9 +53,18 @@ Current list of features
 Usage
 =====
 
+* Validate by voucher code
 ```swift
 let client = VoucherifyClient(clientId: "011240bf-d5fc-4ef1-9e82-11eb68c43bf5", clientToken: "9e2230c5-71fb-460a-91c6-fbee64707a20")
 client.validateVoucher("test") { (response) in
+    debugPrint(response)
+}
+```
+
+* Validate gift voucher
+```swift
+let client = VoucherifyClient(clientId: "011240bf-d5fc-4ef1-9e82-11eb68c43bf5", clientToken: "9e2230c5-71fb-460a-91c6-fbee64707a20")
+client.validateVoucher("test", amount: 1323) { (response) in
     debugPrint(response)
 }
 ```
@@ -64,6 +73,77 @@ We are tracking users which are validating vouchers with those who consume them,
 ```swift
 client = VoucherifyClient(clientId: "011240bf-d5fc-4ef1-9e82-11eb68c43bf5", clientToken: "9e2230c5-71fb-460a-91c6-fbee64707a20", trackingId: "my_custom_tracking_id")
 ```
+
+VoucherResponse
+=====
+
+Valid amount discount response:
+
+    {
+        "code": "VOUCHER_CODE",
+        "valid": true,
+        "discount": {
+            "type": "AMOUNT",
+            "amount_off": 999,
+        },
+        "tracking_id": "generated-or-passed-tracking-id"
+    }
+
+Valid percentage discount response:
+
+    {
+        "code": "VOUCHER_CODE",
+        "valid": true,
+        "discount": {
+            "type": "PERCENT",
+            "percent_off": 15.0,
+        },
+        "tracking_id": "generated-or-passed-tracking-id"
+    }
+    
+Valid unit discount response:
+    
+    {
+        "code": "VOUCHER_CODE",
+        "valid": true,
+        "discount": {
+            "type": "UNIT",
+            "unit_off": 1.0,
+        },
+        "tracking_id": "generated-or-passed-tracking-id"
+    }
+
+Valid gift voucher response:
+    
+    
+    ```javascript
+    {
+        "code": "VOUCHER_CODE",
+        "valid": true,
+        "gift": {
+            "amount": 10000
+        }
+        "tracking_id": "generated-or-passed-tracking-id"
+    }
+       ```
+
+Invalid voucher response:
+
+    {
+        "code": "VOUCHER_CODE",
+        "valid": false,
+        "reason": "voucher expired",
+        "tracking_id": "generated-or-passed-tracking-id"
+    }
+
+There are several reasons why validation may fail (`valid: false` response). 
+You can find the actual cause in the `reason` field:
+
+- `voucher is disabled`
+- `voucher not active yet`
+- `voucher expired`
+- `quantity exceeded`
+- `gift amount exceeded`
 
 Author
 =====
