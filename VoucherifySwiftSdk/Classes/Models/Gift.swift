@@ -1,7 +1,3 @@
-//
-// Created by Marcin Polak on 22.07.2016.
-//
-
 import Foundation
 import ObjectMapper
 

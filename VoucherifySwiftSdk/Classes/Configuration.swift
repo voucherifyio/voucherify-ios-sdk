@@ -1,7 +1,3 @@
-//
-// Created by Marcin Polak on 08.06.2016.
-//
-
 import Foundation
 
 let VOUCHERIFY_SERVER_ENDPOINT = "https://api.voucherify.io"
@@ -59,4 +55,8 @@ public struct HttpQueryParamName {
     static let GIFT_AMOUNT = "amount"
     static let TRACKING_ID = "tracking_id"
     static let CHANNEL = "channel"
+
+    static let PRODUCT_ID = "product_id"
+    static let SKU_ID = "sku_id"
+    static let QUANTITY = "quantity"
 }
