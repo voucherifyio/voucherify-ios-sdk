@@ -1,7 +1,3 @@
-//
-// Created by Marcin Polak on 08.06.2016.
-//
-
 import Foundation
 import Alamofire
 import ObjectMapper
@@ -89,6 +85,7 @@ extension VoucherifyClient {
     /**
      Method which allows to validate a voucher based on its code and gift amount
      - parameter code: Voucher's code which we want to validate
+     - parameter amount: validating a gift voucher requires to pass an amount that is intended to be withdrawn from the voucher. Order amount have to be expressed in cents, as an integer
      - parameter completion: response callback function
      */
     public func validateVoucher(code: String, amount: Int? = nil, completion: (response: VoucherResponse?) -> Void) {
@@ -102,4 +99,27 @@ extension VoucherifyClient {
         }
     }
 
+    /**
+    Method which allows to validate a voucher with validation rules concerning products or variants (SKUs)
+    - parameter code: Voucher's code which we want to validate
+    - parameter amount: an amount that is intended to be withdrawn from the voucher. Order amount have to be expressed in cents, as an integer
+    - parameter orderItems: validation rules concerning products or variants (SKUs)
+    - parameter completion: response callback function
+    */
+    public func validateVoucher(code: String, amount: Int? = nil, orderItems: [OrderItem], completion: (response: VoucherResponse?) -> Void) {
+        var params = getBaseQueryParams()
+
+        params[HttpQueryParamName.CODE] = code
+        params[HttpQueryParamName.GIFT_AMOUNT] = amount
+
+        for (index, orderItem) in orderItems.enumerate() {
+            params["item[\(index)][\(HttpQueryParamName.PRODUCT_ID)]"] = orderItem.productId
+            params["item[\(index)][\(HttpQueryParamName.SKU_ID)]"] = orderItem.skuId
+            params["item[\(index)][\(HttpQueryParamName.QUANTITY)]"] = orderItem.quantity
+        }
+
+        request(VoucherifyRouter.VALIDATE_VOUCHER(params)) { (response) in
+            completion(response: self.handleJsonResponse(response))
+        }
+    }
 }

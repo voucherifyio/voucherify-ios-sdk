@@ -1,7 +1,7 @@
 Voucherify-Swift-SDK
 ======================
 
-###Version: 0.2.0
+###Version: 0.3.0
 
 Swift SDK for Voucherify to validate a voucher on client side.
 
@@ -66,6 +66,16 @@ client.validateVoucher("test") { (response) in
 let client = VoucherifyClient(clientId: "011240bf-d5fc-4ef1-9e82-11eb68c43bf5", clientToken: "9e2230c5-71fb-460a-91c6-fbee64707a20")
 client.validateVoucher("test", amount: 1323) { (response) in
     debugPrint(response)
+}
+```
+
+* Validate voucher with with validation rules concerning products or variants (SKUs). It's required to pass order items.
+```swift
+let client = VoucherifyClient(clientId: "011240bf-d5fc-4ef1-9e82-11eb68c43bf5", clientToken: "9e2230c5-71fb-460a-91c6-fbee64707a20")
+client.validateVoucher("test", orderItems: [
+        OrderItem(productId: "prod_anJ03RZZq74z4v", skuId: "sku_F2S9beIUgWjX84", quantity: 1),
+    ]) { (response) in
+        debugPrint(response)
 }
 ```
 

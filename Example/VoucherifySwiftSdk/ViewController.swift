@@ -1,11 +1,3 @@
-//
-//  ViewController.swift
-//  VoucherifySwiftSdk
-//
-//  Created by marcin.polak on 06/08/2016.
-//  Copyright (c) 2016 marcin.polak. All rights reserved.
-//
-
 import UIKit
 import VoucherifySwiftSdk
 
@@ -17,7 +9,20 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         client = VoucherifyClient(clientId: "011240bf-d5fc-4ef1-9e82-11eb68c43bf5", clientToken: "9e2230c5-71fb-460a-91c6-fbee64707a20")
+
+        /*
+        * Validate voucher by his code
+        */
         client?.validateVoucher("test") { (response) in
+            debugPrint(response)
+        }
+
+        /*
+        * Validate voucher with validation rules concerning products or variants (SKUs)
+        */
+        client?.validateVoucher("test", orderItems: [
+                OrderItem(productId: "prod_anJ03RZZq74z4v", skuId: "sku_F2S9beIUgWjX84", quantity: 1),
+                ]) { (response) in
             debugPrint(response)
         }
     }
