@@ -7,19 +7,13 @@ import ObjectMapper
 */
 public class VoucherifyClient {
 
-    /*
-    * Client's custom configuration
-    */
+    /// Client's custom configuration
     private let configuration: Configuration
 
-    /*
-    * Alamofire's manager to perform HTTP calls
-    */
+    /// Alamofire's manager to perform HTTP calls
     private let manager: Alamofire.Manager
 
-    /*
-    * Query custom tracking param
-    */
+    /// Query custom tracking param
     private let trackingId: String
 
     /**
@@ -119,6 +113,21 @@ extension VoucherifyClient {
         }
 
         request(VoucherifyRouter.VALIDATE_VOUCHER(params)) { (response) in
+            completion(response: self.handleJsonResponse(response))
+        }
+    }
+
+    /**
+    Increments redemption counter and updates history of the voucher
+    - parameter code: Voucher's code which we want to redeem
+    - parameter completion: response callback function
+    */
+    public func redeemVoucher(code: String, completion: (response: VoucherRedemptionResult?) -> Void) {
+        var params = getBaseQueryParams()
+
+        params[HttpQueryParamName.CODE] = code
+
+        request(VoucherifyRouter.REDEEM_VOUCHER(params)) { (response) in
             completion(response: self.handleJsonResponse(response))
         }
     }
