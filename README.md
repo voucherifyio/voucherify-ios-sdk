@@ -1,7 +1,7 @@
 Voucherify-Swift-SDK
 ======================
 
-###Version: 0.3.0
+###Version: 0.4.0
 
 Swift SDK for Voucherify to validate a voucher on client side.
 
@@ -49,6 +49,8 @@ Current list of features
 - validate a voucher based on its code and optionally order amount (required for gift vouchers)
 - validate a gift voucher. This requires to pass an amount that is intended to be withdrawn from the voucher.
   Order amount have to be expressed in cents, as an integer. For example $22.50 should be provided as 2250
+- validate a voucher with with validation rules
+- redeem a voucher using its code
 
 Usage
 =====
@@ -61,7 +63,7 @@ client.validateVoucher("test") { (response) in
 }
 ```
 
-* Validate gift voucher
+* Validate a gift voucher
 ```swift
 let client = VoucherifyClient(clientId: "011240bf-d5fc-4ef1-9e82-11eb68c43bf5", clientToken: "9e2230c5-71fb-460a-91c6-fbee64707a20")
 client.validateVoucher("test", amount: 1323) { (response) in
@@ -69,13 +71,21 @@ client.validateVoucher("test", amount: 1323) { (response) in
 }
 ```
 
-* Validate voucher with with validation rules concerning products or variants (SKUs). It's required to pass order items.
+* Validate a voucher with with validation rules concerning products or variants (SKUs). It's required to pass order items.
 ```swift
 let client = VoucherifyClient(clientId: "011240bf-d5fc-4ef1-9e82-11eb68c43bf5", clientToken: "9e2230c5-71fb-460a-91c6-fbee64707a20")
 client.validateVoucher("test", orderItems: [
         OrderItem(productId: "prod_anJ03RZZq74z4v", skuId: "sku_F2S9beIUgWjX84", quantity: 1),
     ]) { (response) in
         debugPrint(response)
+}
+```
+
+* Redeem a voucher
+```swift
+let client = VoucherifyClient(clientId: "011240bf-d5fc-4ef1-9e82-11eb68c43bf5", clientToken: "9e2230c5-71fb-460a-91c6-fbee64707a20")
+client.redeemVoucher("Testing7fjWdr") { (response) in
+    debugPrint(response)
 }
 ```
 
@@ -126,7 +136,6 @@ Valid unit discount response:
 Valid gift voucher response:
     
     
-    ```javascript
     {
         "code": "VOUCHER_CODE",
         "valid": true,
@@ -135,7 +144,6 @@ Valid gift voucher response:
         }
         "tracking_id": "generated-or-passed-tracking-id"
     }
-       ```
 
 Invalid voucher response:
 
@@ -145,6 +153,44 @@ Invalid voucher response:
         "reason": "voucher expired",
         "tracking_id": "generated-or-passed-tracking-id"
     }
+
+Valid redeem voucher response:
+
+    {
+        "id": "r_CzUkA2Y6H7vGRYARuqK83ED8",
+        "object": "redemption",
+        "date": "2015-09-25T10:34:57Z",
+        "tracking_id": "(tracking_id not set)",
+        "voucher": {
+            "code": "v1GiJYuuS",
+            "type": "DISCOUNT_VOUCHER",
+            "campaign": "vip",
+            "discount": {
+                "amount_off": 1000,
+                "type": "AMOUNT"
+            },
+            "expiration_date": "2015-12-31T23:59:59Z",
+            "redemption": {
+                "quantity": 3,
+                "redeemed_quantity": 2,
+                "redemption_entries": [
+                    {
+                        "id": "r_PczjA2Y6H7vGRYARuqK8S9gf",
+                        "object": "redemption",
+                        "date": "2015-09-24T06:03:35Z",
+                        "tracking_id": "(tracking_id not set)"
+                    },
+                    {
+                        "id": "r_CzUkA2Y6H7vGRYARuqK83ED8",
+                        "object": "redemption",
+                        "date": "2015-09-25T10:34:57Z",
+                        "tracking_id": "(tracking_id not set)"
+                    },
+                ]
+            },
+            "additional_info": ""
+        }
+}
 
 There are several reasons why validation may fail (`valid: false` response). 
 You can find the actual cause in the `reason` field:
