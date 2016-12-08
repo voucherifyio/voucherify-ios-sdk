@@ -13,16 +13,16 @@ class ViewController: UIViewController {
         /*
         * Validate voucher by its code
         */
-//        client?.validateVoucher("test") { (response) in
-//            debugPrint(response)
+//        client?.validateVoucher(code: "test") { (response) in
+//            debugPrint(response ?? "")
 //        }
 
         /*
         * Redeem voucher by its code
         */
-//        client?.redeemVoucher("Testing7fjWdr") { (response) in
-//            debugPrint(response)
-//        }
+        client?.redeemVoucher(code: "Testing7fjWdr") { (response) in
+            debugPrint(response ?? "")
+        }
 
         /*
         * Validate voucher with validation rules concerning products or variants (SKUs)
