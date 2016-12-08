@@ -5,8 +5,8 @@ public struct Gift: Mappable {
 
     public var amount: Int?
 
-    public init?(_ map: Map) {
-        mapping(map)
+    public init?(map: Map) {
+        mapping(map: map)
     }
 
     mutating public func mapping(map: Map) {

@@ -14,8 +14,8 @@ public struct VoucherRedemption: Mappable {
 
     public var redemptionEntries: Array<RedemptionEntry>?
 
-    public init?(_ map: Map) {
-        mapping(map)
+    public init?(map: Map) {
+        mapping(map: map)
     }
 
     mutating public func mapping(map: Map) {

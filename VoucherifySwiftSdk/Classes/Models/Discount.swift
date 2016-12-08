@@ -9,8 +9,8 @@ public struct Discount: Mappable {
     public var unitOff: Double?
     public var unitType: String?
 
-    public init?(_ map: Map) {
-        mapping(map)
+    public init?(map: Map) {
+        mapping(map: map)
     }
 
     mutating public func mapping(map: Map) {

@@ -25,10 +25,10 @@ public struct Voucher: Mappable {
 
     /// Voucher's start date
     //@SerializedName("")
-    public var startDate: NSDate?
+    public var startDate: Date?
 
     /// Voucher's expiration date
-    public var expirationDate: NSDate?
+    public var expirationDate: Date?
 
     /// Disables a voucher when set to false even if it's within a activity period (start date - expiration date).
     public var active: Bool?
@@ -44,8 +44,8 @@ public struct Voucher: Mappable {
 
     public var metadata: Dictionary<String, AnyObject>?
 
-    public init?(_ map: Map) {
-        mapping(map)
+    public init?(map: Map) {
+        mapping(map:map)
     }
 
     mutating public func mapping(map: Map) {
@@ -56,8 +56,8 @@ public struct Voucher: Mappable {
         category        <- map["category"]
         discount        <- map["discount"]
         gift            <- map["gift"]
-        startDate       <- (map["start_date"], ISO8601DateTransform())
-        expirationDate  <- (map["expiration_date"], ISO8601DateTransform())
+        startDate       <- (map["start_date"], DateTransform())
+        expirationDate  <- (map["expiration_date"], DateTransform())
         active          <- map["active"]
         publish         <- map["publish"]
         redemption      <- map["redemption"]

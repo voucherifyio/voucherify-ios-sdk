@@ -6,7 +6,7 @@ public struct VoucherRedemptionResult: Mappable {
     public var id: String?
 
     /// When the voucher was redeemed
-    public var date: NSDate?
+    public var date: Date?
 
     /// Type of the operation (redemption or redemption_rollback)
     public var object: String?
@@ -29,13 +29,13 @@ public struct VoucherRedemptionResult: Mappable {
     /// Metadata - whatever you
     public var metadata: Dictionary<String, AnyObject>?
 
-    public init?(_ map: Map) {
-        mapping(map)
+    public init?(map: Map) {
+        mapping(map: map)
     }
 
     mutating public func mapping(map: Map) {
         id          <- map["id"]
-        date        <- (map["date"], ISO8601DateTransform())
+        date        <- (map["date"], DateTransform())
         object      <- map["object"]
         customerId  <- map["customer_id"]
         trackingId  <- map["tracking_id"]
