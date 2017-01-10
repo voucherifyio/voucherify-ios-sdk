@@ -24,7 +24,6 @@ public struct Voucher: Mappable {
     public var gift: Gift?
 
     /// Voucher's start date
-    //@SerializedName("")
     public var startDate: Date?
 
     /// Voucher's expiration date

@@ -1,9 +1,8 @@
 import Foundation
 
-let VOUCHERIFY_SERVER_ENDPOINT = "https://api.voucherify.io"
-
-let VOUCHERIFY_CHANNEL_NAME = "Swift-SDK"
-let VOUCHERIFY_DEFAULT_ORIGIN = "http://voucherify-swift"
+let voucherifyServerEndpoint = "https://api.voucherify.io"
+let voucherifyChannelName = "Swift-SDK"
+let voucherifyDefaultOrigin = "http://voucherify-swift"
 
 /// Configuration parameters for a client instance
 
@@ -12,7 +11,7 @@ public struct Configuration {
     public var secure = true
 
     /// The server to use for performing requests, defaults to `api.voucherify.io`
-    public var server = VOUCHERIFY_SERVER_ENDPOINT
+    public var server = voucherifyServerEndpoint
 
     /// The user agent to use for performing requests
     public var userAgentClient = "swift"
@@ -43,20 +42,20 @@ public struct Configuration {
 }
 
 public struct HttpHeader {
-    static let HTTP_HEADER_CONTENT_TYPE = "Content-Type"
-    static let HTTP_HEADER_CLIENT_ID = "X-Client-Application-Id"
-    static let HTTP_HEADER_CLIENT_TOKEN = "X-Client-Token"
-    static let HTTP_HEADER_ORIGIN = "origin"
-    static let HTTP_HEADER_VOUCHERIFY_CHANNEL = "X-Voucherify-Channel"
+    static let httpHeaderContentType = "Content-Type"
+    static let httpHeaderClientId = "X-Client-Application-Id"
+    static let httpHeaderClientToken = "X-Client-Token"
+    static let httpHeaderOrigin = "origin"
+    static let httpHeaderChannel = "X-Voucherify-Channel"
 }
 
 public struct HttpQueryParamName {
-    static let CODE = "code"
-    static let GIFT_AMOUNT = "amount"
-    static let TRACKING_ID = "tracking_id"
-    static let CHANNEL = "channel"
+    static let code = "code"
+    static let giftAmount = "amount"
+    static let trackingId = "tracking_id"
+    static let channel = "channel"
 
-    static let PRODUCT_ID = "product_id"
-    static let SKU_ID = "sku_id"
-    static let QUANTITY = "quantity"
+    static let productId = "product_id"
+    static let skuId = "sku_id"
+    static let quantity = "quantity"
 }
