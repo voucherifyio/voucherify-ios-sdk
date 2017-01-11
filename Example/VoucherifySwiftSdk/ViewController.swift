@@ -13,26 +13,24 @@ class ViewController: UIViewController {
         /*
         * Validate voucher by its code
         */
-        client?.vouchers().validations().validateVoucher(code: "test") { (response) in
-            debugPrint(response ?? "")
-        }
+//        client?.vouchers().validations().validateVoucher(code: "test") { (response) in
+//            debugPrint(response ?? "")
+//        }
 
         /*
         * Redeem voucher by its code
         */
-//        client?.vouchers().redeemptions().redeemVoucher(code: "Testing7fjWdr") { (response) in
-//            debugPrint(response ?? "")
-//        }
+        client?.vouchers().redeemptions().redeem(code: "Testing7fjWdr") { (response) in
+            debugPrint(response ?? "")
+        }
         
 //        var redeemContext = VoucherRedemptionContext()
 //        redeemContext.customer = Customer(id: "cust_VLrEd4woIyiUeXVVufr5xxho", sourceId: nil)
         
-//        client?.vouchers().redeemptions().redeemVoucher(code: "Testing7fjWdr", redeemContext: redeemContext){ (response) in
+//        client?.vouchers().redeemptions().redeem(code: "Testing7fjWdr", redeemContext: redeemContext){ (response) in
 //            debugPrint(response ?? "")
 //        }
         
-//        client?.redeemVoucher(code: <#T##String#>, completion: <#T##(VoucherRedemptionResult?) -> Void#>)
-
         /*
         * Validate voucher with validation rules concerning products or variants (SKUs)
         */
