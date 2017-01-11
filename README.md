@@ -17,10 +17,9 @@
 
 <p align="center">
 API:
-<a href="#vouchers-api">Validations</a>
+<a href="#validations-api">Validations</a>
 |
 <a href="#redemptions-api">Redemptions</a>
-|
 </p>
 
 
