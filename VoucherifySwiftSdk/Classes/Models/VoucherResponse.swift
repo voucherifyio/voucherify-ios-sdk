@@ -10,8 +10,8 @@ public struct VoucherResponse: Mappable {
     public var gift: Gift?
     public var reason: String?
 
-    public init?(_ map: Map) {
-        mapping(map)
+    public init?(map: Map) {
+        mapping(map: map)
     }
     mutating public func mapping(map: Map) {
         code        <- map["code"]

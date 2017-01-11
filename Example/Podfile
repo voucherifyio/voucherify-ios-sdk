@@ -6,7 +6,7 @@ target 'VoucherifySwiftSdk_Example' do
   target 'VoucherifySwiftSdk_Tests' do
     inherit! :search_paths
 
-    pod 'Quick', '~> 0.8'
-  pod 'Nimble', '~> 3.0'
+    pod 'Quick', '~> 1.0.0'
+    pod 'Nimble', '~> 5.0.0'
   end
 end

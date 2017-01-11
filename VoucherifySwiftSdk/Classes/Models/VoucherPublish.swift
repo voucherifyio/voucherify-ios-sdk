@@ -6,8 +6,8 @@ public struct VoucherPublish: Mappable {
     public var count: Int?
     public var entries: Array<PublishEntry>?
 
-    public init?(_ map: Map) {
-        mapping(map)
+    public init?(map: Map) {
+        mapping(map: map)
     }
 
     mutating public func mapping(map: Map) {
