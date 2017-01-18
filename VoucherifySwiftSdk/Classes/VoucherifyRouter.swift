@@ -25,7 +25,7 @@ public enum VoucherifyRouter: URLRequestConvertible {
         switch self {
         case .validateVoucher(let parameters):
             return ("/client/v1/validate", parameters);
-        case .redeemVoucher(let parameters, let _):
+        case .redeemVoucher(let parameters, _):
             return ("/client/v1/redeem", parameters)
         }
     }
