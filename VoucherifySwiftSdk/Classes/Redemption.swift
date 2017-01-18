@@ -19,7 +19,7 @@ public class Redeemption {
 
         params[HttpQueryParamName.code] = code as AnyObject?
 
-        httpClient.request(requestUrl: VoucherifyRouter.redeemVoucher(params, redeemContext) as! URLRequestConvertible) { (response) in
+        httpClient.request(requestUrl: VoucherifyRouter.redeemVoucher(params, redeemContext) as URLRequestConvertible) { (response) in
             completion(self.httpClient.handleJsonResponse(response: response))
         }
     }

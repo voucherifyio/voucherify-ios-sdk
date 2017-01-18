@@ -21,7 +21,7 @@ public class Validation {
         params[HttpQueryParamName.code] = code as AnyObject?
         params[HttpQueryParamName.giftAmount] = amount as AnyObject?
 
-        httpClient.request(requestUrl: VoucherifyRouter.validateVoucher(params) as! URLRequestConvertible) { (response) in
+        httpClient.request(requestUrl: VoucherifyRouter.validateVoucher(params) as URLRequestConvertible) { (response) in
             completion(self.httpClient.handleJsonResponse(response: response))
         }
     }
@@ -45,7 +45,7 @@ public class Validation {
             params["item[\(index)][\(HttpQueryParamName.quantity)]"] = orderItem.quantity as AnyObject?
         }
 
-        httpClient.request(requestUrl: VoucherifyRouter.validateVoucher(params) as! URLRequestConvertible) { (response) in
+        httpClient.request(requestUrl: VoucherifyRouter.validateVoucher(params) as URLRequestConvertible) { (response) in
             completion(self.httpClient.handleJsonResponse(response: response))
         }
     }
