@@ -72,7 +72,7 @@ VoucherifyClient(clientId: YOUR-PUBLIC-CLIENT-APPLICATION-ID, clientToken: YOUR-
 Bug reports and pull requests are welcome through [GitHub Issues](https://github.com/voucherifyio/voucherify-ios-sdk/issues).
 
 ## Changelog
-- **2017-01-12** - `1.1.0` - Update Order and OrderItem model
+- **2017-03-16** - `1.1.0` - Update Order and OrderItem model
 - **2017-01-12** - `1.0.0` - Unify API with other voucherify SDKs
 - **2016-09-15** - `0.4.0` - redeem a voucher
 - **2016-08-08** - `0.3.0` - validate voucher with validation rules concerning products or variants (SKUs)
