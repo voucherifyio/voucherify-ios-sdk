@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'VoucherifySwiftSdk'
-  s.version          = '1.0.0'
+  s.version          = '1.1.0'
   s.summary          = 'Swift SDK for Voucherify to validate a voucher on client side.'
 
   s.description      = <<-DESC

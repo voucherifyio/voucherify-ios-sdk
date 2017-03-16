@@ -6,6 +6,11 @@ public struct Order: Mappable {
     public var amount: Int?
     public var items: Array<OrderItem>?
  
+    public init(amount: Int, items: Array<OrderItem>) {
+        self.amount = amount
+        self.items = items
+    }
+    
     public init?(map: Map) {
         mapping(map: map)
     }
