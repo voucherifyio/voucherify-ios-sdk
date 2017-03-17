@@ -18,8 +18,8 @@ public struct OrderItem: Mappable {
     }
     
     mutating public func mapping(map: Map) {
-        productId   <- map["productId"]
-        skuId       <- map["skuId"]
+        productId   <- map["product_id"]
+        skuId       <- map["sku_id"]
         quantity    <- map["quantity"]
     }
 }
