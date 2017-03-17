@@ -19,10 +19,8 @@ public class VoucherifyHttpClient {
 
     internal func request(requestUrl: URLRequestConvertible, completion: @escaping (DataResponse<Any>) -> Void) {
         manager.request(requestUrl).responseJSON { response in
-                    debugPrint("Request: \(try! requestUrl.asURLRequest().url?.absoluteString)")
-                    debugPrint("[Voucherify] JSON Response \(response.result.value)")
-                    completion(response)
-                }
+            completion(response)
+        }
     }
 
     internal func getBaseQueryParams() -> [String: AnyObject] {
@@ -34,16 +32,28 @@ public class VoucherifyHttpClient {
         return params
     }
 
-    internal func handleJsonResponse<T: Mappable>(response: DataResponse<Any>) -> T? {
-        let json: AnyObject? = try! JSONSerialization.jsonObject(with: (response.data! as NSData) as Data, options: []) as AnyObject?
-
-        var data : T?;
-
-        if let r: AnyObject = json {
-            data = Mapper<T>().map(JSONObject: r)!;
+    internal func handleJsonResponse<T: Mappable>(response: DataResponse<Any>) -> Result<T> {
+        if let error = response.error {
+            return Result<T>.failure(error)
         }
 
-        return data
+        let json: AnyObject? = try! JSONSerialization.jsonObject(
+                with: (response.data! as NSData) as Data, options: []) as AnyObject?
+
+        if let errorJson = json {
+            let error = Mapper<GeneralError>().map(JSONObject: errorJson)
+
+            if let error = error, error.code != nil {
+                return Result<T>.failure(error)
+            }
+        }
+
+        var data: T?
+        if let json = json {
+            data = Mapper<T>().map(JSONObject: json)
+        }
+
+        return Result<T>.success(data!)
 
     }
 

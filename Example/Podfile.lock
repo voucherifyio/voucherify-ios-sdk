@@ -3,7 +3,7 @@ PODS:
   - Nimble (5.0.0)
   - ObjectMapper (2.2.5)
   - Quick (1.0.0)
-  - VoucherifySwiftSdk (1.0.0):
+  - VoucherifySwiftSdk (1.2.0):
     - Alamofire (~> 4.2)
     - ObjectMapper (~> 2.2)
 
@@ -21,7 +21,7 @@ SPEC CHECKSUMS:
   Nimble: 56fc9f5020effa2206de22c3dd910f4fb011b92f
   ObjectMapper: fb30f71e08470d1e5a20b199fafe1246281db898
   Quick: 8024e4a47e6cc03a9d5245ef0948264fc6d27cff
-  VoucherifySwiftSdk: eccedda5ecdb89d550513b6571bc0c095ee33143
+  VoucherifySwiftSdk: aaa098b52d04a9a7c67fa5781e5092430b757e8b
 
 PODFILE CHECKSUM: 086a2621822e712ffccb3d2089efb1688e65ac44
 

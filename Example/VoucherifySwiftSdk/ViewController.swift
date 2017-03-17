@@ -1,5 +1,6 @@
 import UIKit
 import VoucherifySwiftSdk
+import Alamofire
 
 class ViewController: UIViewController {
 
@@ -43,16 +44,20 @@ class ViewController: UIViewController {
 //        let orderItems: Array<OrderItem> = [
 //            OrderItem(productId: "prod_anJ03RZZq74z4v", skuId: "sku_F2S9beIUgWjX84", quantity: 1)
 //        ]
-        
+//
 //        var redeemContext = VoucherRedemptionContext()
 //        redeemContext.customer = Customer(id: "cust_VLrEd4woIyiUeXVVufr5xxho", sourceId: nil)
 //        redeemContext.order = Order(amount: 1, items: orderItems)
-        
-//        client?.vouchers().redeemptions().redeem(code: "test", redeemContext: redeemContext) {(response) in
-//            debugPrint(response ?? "")
+//
+//        client?.vouchers().redeemptions().redeem(code: "test", redeemContext: redeemContext) {(response: Result) in
+//            switch response {
+//                case .success(let response):
+//                    debugPrint("OK")
+//                case .failure(let error):
+//                    debugPrint("ERROR")
+//            }
+//            debugPrint(response)
 //        }
-        
     }
 
 }
-

@@ -15,7 +15,9 @@ public class Validation {
     - parameter amount: validating a gift voucher requires to pass an amount that is intended to be withdrawn from the voucher. Order amount have to be expressed in cents, as an integer
     - parameter completion: response callback function
     */
-    public func validateVoucher(code: String, amount: Int? = nil, completion: @escaping (_ response: VoucherResponse?) -> Void) {
+    public func validateVoucher(code: String,
+                                amount: Int? = nil,
+                                completion: @escaping (_ response: Result<VoucherResponse>) -> Void) {
         var params = httpClient.getBaseQueryParams()
 
         params[HttpQueryParamName.code] = code as AnyObject?
@@ -33,7 +35,10 @@ public class Validation {
     - parameter orderItems: validation rules concerning products or variants (SKUs)
     - parameter completion: response callback function
     */
-    public func validateVoucher(code: String, amount: Int? = nil, orderItems: [OrderItem], completion: @escaping (_ response: VoucherResponse?) -> Void) {
+    public func validateVoucher(code: String,
+                                amount: Int? = nil,
+                                orderItems: [OrderItem],
+                                completion: @escaping (_ response: Result<VoucherResponse>) -> Void) {
         var params = httpClient.getBaseQueryParams()
 
         params[HttpQueryParamName.code] = code as AnyObject?

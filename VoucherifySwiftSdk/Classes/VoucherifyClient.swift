@@ -20,7 +20,11 @@ public class VoucherifyClient {
      - parameter configuration: Custom configuration of the client
      - returns: An initialized client instance
      */
-    public init(clientId: String, clientToken: String, origin: String = "", trackingId: String = "swift-sdk", configuration: Configuration = Configuration()) {
+    public init(clientId: String,
+                clientToken: String,
+                origin: String = "",
+                trackingId: String = "swift-sdk",
+                configuration: Configuration = Configuration()) {
         self.configuration = configuration
 
         let sessionConfiguration = URLSessionConfiguration.default
