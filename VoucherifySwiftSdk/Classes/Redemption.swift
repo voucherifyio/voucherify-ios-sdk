@@ -14,7 +14,9 @@ public class Redeemption {
        - parameter code: Voucher's code which we want to redeem
        - parameter completion: response callback function
        */
-    public func redeem(code: String, redeemContext: VoucherRedemptionContext? = nil, completion: @escaping (_ response: VoucherRedemptionResult?) -> Void) {
+    public func redeem(code: String,
+                       redeemContext: VoucherRedemptionContext? = nil,
+                       completion: @escaping (_ response: Result<VoucherRedemptionResult>) -> Void) {
         var params = httpClient.getBaseQueryParams()
 
         params[HttpQueryParamName.code] = code as AnyObject?

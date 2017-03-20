@@ -52,11 +52,11 @@ VoucherifyClient(clientId: YOUR-PUBLIC-CLIENT-APPLICATION-ID, clientToken: YOUR-
 ### [Validate Voucher]
 
 ```swift
-    client.vouchers().validations().validateVoucher(code: String, amount: Int? = nil, completion: (_ response: VoucherResponse?) -> Void)
+    client.vouchers().validations().validateVoucher(code: String, amount: Int? = nil, completion: (_ response: Result<VoucherResponse>) -> Void)
 ```
 
 ```swift
-    client.vouchers().validations().validateVoucher(code: String, amount: Int? = nil, orderItems: [OrderItem], completion: (_ response: VoucherResponse?) -> Void)
+    client.vouchers().validations().validateVoucher(code: String, amount: Int? = nil, orderItems: [OrderItem], completion: (_ response: Result<VoucherResponse>) -> Void)
 ```
 
 #### Redemptions API
@@ -64,7 +64,7 @@ VoucherifyClient(clientId: YOUR-PUBLIC-CLIENT-APPLICATION-ID, clientToken: YOUR-
 ### [Redeem Voucher]
 
 ```swift
-    client.vouchers().redeemptions().redeem(code: String, redeemContext: VoucherRedemptionContext? = nil, completion: (_ response: VoucherRedemptionResult?) -> Void)
+    client.vouchers().redeemptions().redeem(code: String, redeemContext: VoucherRedemptionContext? = nil, completion: (_ response: Result<VoucherRedemptionResult>) -> Void)
 ```
 
 ## Contributing
@@ -72,6 +72,7 @@ VoucherifyClient(clientId: YOUR-PUBLIC-CLIENT-APPLICATION-ID, clientToken: YOUR-
 Bug reports and pull requests are welcome through [GitHub Issues](https://github.com/voucherifyio/voucherify-ios-sdk/issues).
 
 ## Changelog
+- **2017-03-17** - `1.3.0` - Improve error handling
 - **2017-03-17** - `1.2.0` - Fix OrderItem mappings
 - **2017-03-16** - `1.1.0` - Update Order and OrderItem model
 - **2017-01-12** - `1.0.0` - Unify API with other voucherify SDKs
