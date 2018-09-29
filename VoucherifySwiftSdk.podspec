@@ -22,7 +22,7 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/voucherifyio/voucherify-ios-sdk.git', :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/hashtag/voucherify'
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '9.0'
 
   s.source_files = 'VoucherifySwiftSdk/Classes/**/*'
   s.dependency 'Alamofire', '~> 4.2'
