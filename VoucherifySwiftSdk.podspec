@@ -26,6 +26,6 @@ Pod::Spec.new do |s|
 
   s.source_files = 'VoucherifySwiftSdk/Classes/**/*'
   s.dependency 'Alamofire', '~> 4.2'
-  s.dependency 'ObjectMapper', '~> 2.2'
+  s.dependency 'ObjectMapper', '~> 3.3'
 
 end
