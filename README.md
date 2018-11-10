@@ -82,7 +82,6 @@ Bug reports and pull requests are welcome through [GitHub Issues](https://github
 - **2016-07-22** - `0.2.0` - validate gift voucher
 - **2016-07-08** - `0.1.0` - validate voucher by its code
 
-
 ## License
 
 MIT. See the [LICENSE](https://github.com/voucherifyio/voucherify-ios-sdk/blob/master/LICENSE) file for details.
