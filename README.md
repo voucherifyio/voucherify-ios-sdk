@@ -25,7 +25,7 @@ API:
 
 ## Setup
 
-The Voucherify Swift SDK requires Swift 3.
+The Voucherify Swift SDK requires Swift 4.2
 
 ###### Using [CocoaPods](http://cocoapods.org):
 
@@ -72,6 +72,7 @@ VoucherifyClient(clientId: YOUR-PUBLIC-CLIENT-APPLICATION-ID, clientToken: YOUR-
 Bug reports and pull requests are welcome through [GitHub Issues](https://github.com/voucherifyio/voucherify-ios-sdk/issues).
 
 ## Changelog
+- **2018-12-04** - `2.0.0` - Swift 4.2
 - **2018-09-29** - `1.4.0` - Change minimum target version to 9.0 and update external dependency to the latest version
 - **2017-03-17** - `1.3.0` - Improve error handling
 - **2017-03-17** - `1.2.0` - Fix OrderItem mappings
@@ -81,7 +82,6 @@ Bug reports and pull requests are welcome through [GitHub Issues](https://github
 - **2016-08-08** - `0.3.0` - validate voucher with validation rules concerning products or variants (SKUs)
 - **2016-07-22** - `0.2.0` - validate gift voucher
 - **2016-07-08** - `0.1.0` - validate voucher by its code
-
 
 ## License
 
