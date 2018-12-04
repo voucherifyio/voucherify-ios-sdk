@@ -25,7 +25,7 @@ API:
 
 ## Setup
 
-The Voucherify Swift SDK requires Swift 3.
+The Voucherify Swift SDK requires Swift 4.2
 
 ###### Using [CocoaPods](http://cocoapods.org):
 
