@@ -72,6 +72,7 @@ VoucherifyClient(clientId: YOUR-PUBLIC-CLIENT-APPLICATION-ID, clientToken: YOUR-
 Bug reports and pull requests are welcome through [GitHub Issues](https://github.com/voucherifyio/voucherify-ios-sdk/issues).
 
 ## Changelog
+- **2018-12-04** - `2.0.0` - Swift 4.2
 - **2018-09-29** - `1.4.0` - Change minimum target version to 9.0 and update external dependency to the latest version
 - **2017-03-17** - `1.3.0` - Improve error handling
 - **2017-03-17** - `1.2.0` - Fix OrderItem mappings
