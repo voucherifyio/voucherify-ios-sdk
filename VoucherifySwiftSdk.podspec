@@ -24,8 +24,11 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = '9.0'
 
+  s.swift_version = '4.2'
+
   s.source_files = 'VoucherifySwiftSdk/Classes/**/*'
+
   s.dependency 'Alamofire', '~> 4.2'
-  s.dependency 'ObjectMapper', '~> 3.3'
+  s.dependency 'ObjectMapper', '~> 3.4'
 
 end
