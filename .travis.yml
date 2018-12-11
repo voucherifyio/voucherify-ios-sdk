@@ -2,9 +2,10 @@
 # * http://www.objc.io/issue-6/travis-ci.html
 # * https://github.com/supermarin/xcpretty#usage
 
-osx_image: xcode8.2
-xcode_sdk: iphonesimulator10.1
-language: objective-c
+# https://docs.travis-ci.com/user/reference/osx/#using-os-x
+osx_image: xcode10
+xcode_sdk: iphonesimulator12.0
+language: swift
 # cache: cocoapods
 podfile: Example/Podfile
 before_install:
@@ -14,5 +15,5 @@ before_install:
 - pod update Alamofire
 - pod update ObjectMapper
 script:
-- set -o pipefail && xcodebuild test -workspace Example/VoucherifySwiftSdk.xcworkspace -scheme VoucherifySwiftSdk-Example -destination 'platform=iOS Simulator,name=iPhone 6,OS=10.1' ONLY_ACTIVE_ARCH=NO | xcpretty
+- set -o pipefail && xcodebuild test -workspace Example/VoucherifySwiftSdk.xcworkspace -scheme VoucherifySwiftSdk-Example -destination 'platform=iOS Simulator,name=iPhone 8,OS=12.0' ONLY_ACTIVE_ARCH=NO | xcpretty
 - pod lib lint
