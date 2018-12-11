@@ -12,6 +12,7 @@ before_install:
 - gem install cocoapods # Since Travis is not always on latest version
 - gem install xcpretty
 - pod install --project-directory=Example
+- pod repo update
 - pod update Alamofire
 - pod update ObjectMapper
 script:
