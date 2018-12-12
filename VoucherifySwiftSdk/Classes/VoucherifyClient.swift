@@ -1,59 +1,58 @@
 import Foundation
-import Alamofire
-import ObjectMapper
 
-/**
- Voucherify client object for performing voucher request against the Voucherify API
-*/
-
+/// Voucherify client object for performing validations and redemptions request against the Voucherify API
 public class VoucherifyClient {
-
-    /// Client's custom configuration
-    private let configuration: Configuration
-
-    private let httpClient: VoucherifyHttpClient
-
-    internal let voucherModule: VoucherModule
-
-    /**
-     Initializes a new VoucherifyClient client instance
-     - parameter configuration: Custom configuration of the client
-     - returns: An initialized client instance
-     */
-    public init(clientId: String,
-                clientToken: String,
-                origin: String = "",
-                trackingId: String = "swift-sdk",
-                configuration: Configuration = Configuration()) {
-        self.configuration = configuration
-
-        let sessionConfiguration = URLSessionConfiguration.default
-        var additionalHeaders = Alamofire.SessionManager.defaultHTTPHeaders
-
-        additionalHeaders[HttpHeader.httpHeaderContentType] = "application/json"
-        additionalHeaders[HttpHeader.httpHeaderClientId] = clientId
-        additionalHeaders[HttpHeader.httpHeaderClientToken] = clientToken
-        additionalHeaders[HttpHeader.httpHeaderOrigin] = origin.isEmpty ? voucherifyDefaultOrigin : origin
-        additionalHeaders[HttpHeader.httpHeaderChannel] = voucherifyChannelName
-
-        sessionConfiguration.httpAdditionalHeaders = additionalHeaders
-        let manager = Alamofire.SessionManager(configuration: sessionConfiguration)
-
-        httpClient = VoucherifyHttpClient(sessionManager: manager, configuration: configuration, trackingId: trackingId)
-
-        voucherModule = VoucherModule(
-                validation: Validation(httpClient: httpClient),
-                redeemption: Redeemption(httpClient: httpClient)
-        )
-    }
-
+	
+	/// Client's custom configuration
+	private let configuration: Configuration
+	
+	/// Client's http client
+	private let httpClient: VoucherifyHttpClient
+	
+	private lazy var validation: Validation = {
+		Validation(httpClient: httpClient)
+	}()
+	
+	private lazy var redemption: Redemption = {
+		Redemption(httpClient: httpClient)
+	}()
+	
+	/**
+	 Initializes a new voucherify client using the provided parameters
+	
+	 - Parameters:
+ 		- clientId: A client-side ID
+ 		- clientToken: A client-side key
+ 		- origin: A client origin
+ 		- trackingId: A client custom tracking ID
+ 		- configuration: A custom configuration of the client
+ 	
+ 	 - Returns: a new voucherify client
+	 */
+	public init(clientId: String,
+				clientToken: String,
+				origin: String = "",
+				trackingId: String = "swift-sdk",
+				configuration: Configuration = Configuration()) {
+		
+		self.configuration = configuration
+		self.httpClient = VoucherifyHttpClientFactory.create(
+			clientId: clientId,
+			clientToken: clientToken,
+			origin: origin,
+			trackingId: trackingId,
+			configuration: configuration
+		)
+	}
 }
 
-//MARK: Voucher module
-
-extension VoucherifyClient {
-
-    public func vouchers() -> VoucherModule {
-        return voucherModule
-    }
+extension VoucherifyClient: Client {
+	
+	public var validations: Validation {
+		return validation
+	}
+	
+	public var redemptions: Redemption {
+		return redemption
+	}
 }
