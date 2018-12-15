@@ -2,8 +2,8 @@ import Foundation
 
 public protocol Client {
 
-	var validations: Validation { get }
+	var validations: ValidationApi { get }
 	
-	var redemptions: Redemption { get }
+	var redemptions: RedemptionApi { get }
 
 }
