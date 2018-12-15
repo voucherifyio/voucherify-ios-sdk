@@ -37,12 +37,19 @@ pod "VoucherifySwiftSdk"
 The `VoucherifyClient` manages your interaction with the Voucherify API.
 
 ```swift
-VoucherifyClient(clientId: YOUR-PUBLIC-CLIENT-APPLICATION-ID, clientToken: YOUR-PUBLIC-CLIENT-APPLICATION-TOKEN)
+VoucherifyClient(
+    clientId: YOUR-PUBLIC-CLIENT-APPLICATION-ID,
+    clientToken: YOUR-PUBLIC-CLIENT-APPLICATION-TOKEN)
 ```
 
 We are tracking users which are validating vouchers with those who consume them, by a `tracking_id`. By that we are setting up an identity for the user. If you want to provide your custom value for `tracking_id`, you have to do it when creating VoucherifyClient:
 ```swift
-VoucherifyClient(clientId: YOUR-PUBLIC-CLIENT-APPLICATION-ID, clientToken: YOUR-PUBLIC-CLIENT-APPLICATION-TOKEN, origin: YOUR_ORIGIN, trackingId: YOUR_TRACKING_ID, configuration: Configuration)
+VoucherifyClient(
+    clientId: YOUR-PUBLIC-CLIENT-APPLICATION-ID,
+    clientToken: YOUR-PUBLIC-CLIENT-APPLICATION-TOKEN,
+    origin: YOUR_ORIGIN,
+    trackingId: YOUR_TRACKING_ID,
+    configuration: Configuration)
 ```
 
 ## API
@@ -52,11 +59,16 @@ VoucherifyClient(clientId: YOUR-PUBLIC-CLIENT-APPLICATION-ID, clientToken: YOUR-
 ### [Validate Voucher]
 
 ```swift
-    client.vouchers().validations().validateVoucher(code: String, amount: Int? = nil, completion: (_ response: Result<VoucherResponse>) -> Void)
+    client.validations.validateVoucher(code: String,
+                                       amount: Int? = nil,
+                                       completion: (_ response: Result<VoucherResponse>) -> Void)
 ```
 
 ```swift
-    client.vouchers().validations().validateVoucher(code: String, amount: Int? = nil, orderItems: [OrderItem], completion: (_ response: Result<VoucherResponse>) -> Void)
+    client.validations.validateVoucher(code: String,
+                                       amount: Int? = nil,
+                                       orderItems: [OrderItem],
+                                       completion: (_ response: Result<VoucherResponse>) -> Void)
 ```
 
 #### Redemptions API
@@ -64,7 +76,9 @@ VoucherifyClient(clientId: YOUR-PUBLIC-CLIENT-APPLICATION-ID, clientToken: YOUR-
 ### [Redeem Voucher]
 
 ```swift
-    client.vouchers().redeemptions().redeem(code: String, redeemContext: VoucherRedemptionContext? = nil, completion: (_ response: Result<VoucherRedemptionResult>) -> Void)
+    client.redeemptions.redeem(code: String,
+                               redeemContext: VoucherRedemptionContext? = nil,
+                               completion: (_ response: Result<VoucherRedemptionResult>) -> Void)
 ```
 
 ## Contributing
@@ -72,6 +86,7 @@ VoucherifyClient(clientId: YOUR-PUBLIC-CLIENT-APPLICATION-ID, clientToken: YOUR-
 Bug reports and pull requests are welcome through [GitHub Issues](https://github.com/voucherifyio/voucherify-ios-sdk/issues).
 
 ## Changelog
+- **2018-12-15** - `3.0.0` - Client's API unification. Information about breaking changes can be find here: https://github.com/voucherifyio/voucherify-ios-sdk/wiki/Voucherify-3.0.0-Migration-Guide
 - **2018-12-04** - `2.0.0` - Swift 4.2
 - **2018-09-29** - `1.4.0` - Change minimum target version to 9.0 and update external dependency to the latest version
 - **2017-03-17** - `1.3.0` - Improve error handling
