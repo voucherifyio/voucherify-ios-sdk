@@ -1,21 +1,17 @@
 import Foundation
 import Alamofire
 
-public class Redemption {
+public class VoucherifyRedemption {
 	
 	private let httpClient: VoucherifyHttpClient
 	
 	public init(httpClient: VoucherifyHttpClient) {
 		self.httpClient = httpClient
 	}
-	
-	/**
-	Redeem increments redemption counter and updates history of the voucher
+}
 
-	- Parameters:
-		- code: a voucher's which will be redeemed
-		- completion: a server response callback block
- 	*/
+extension VoucherifyRedemption: RedemptionApi {
+	
 	public func redeem(code: String,
 					   redeemContext: VoucherRedemptionContext? = nil,
 					   completion: @escaping (_ response: Result<VoucherRedemptionResult>) -> Void) {

@@ -9,12 +9,12 @@ public class VoucherifyClient {
 	/// Client's http client
 	private let httpClient: VoucherifyHttpClient
 	
-	private lazy var validation: Validation = {
-		Validation(httpClient: httpClient)
+	private lazy var validation: ValidationApi = {
+		VoucherifyValidation(httpClient: httpClient)
 	}()
 	
-	private lazy var redemption: Redemption = {
-		Redemption(httpClient: httpClient)
+	private lazy var redemption: RedemptionApi = {
+		VoucherifyRedemption(httpClient: httpClient)
 	}()
 	
 	/**
@@ -48,11 +48,11 @@ public class VoucherifyClient {
 
 extension VoucherifyClient: Client {
 	
-	public var validations: Validation {
+	public var validations: ValidationApi {
 		return validation
 	}
 	
-	public var redemptions: Redemption {
+	public var redemptions: RedemptionApi {
 		return redemption
 	}
 }

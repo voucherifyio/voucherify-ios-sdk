@@ -1,25 +1,21 @@
 import Foundation
 import Alamofire
 
-public class Validation {
+public class VoucherifyValidation {
 	
 	private let httpClient: VoucherifyHttpClient
 	
 	public init(httpClient: VoucherifyHttpClient) {
 		self.httpClient = httpClient
 	}
-	
-	/**
-	ValidateVoucher allows to validate a voucher based on its code and gift amount
+}
 
-	- Parameters:
-		- code: a voucher's code which we want to validate
-	 	- amount:  an amount that is intended to be withdrawn from the voucher. Order amount have to be expressed in cents, as an integer
-	 	- completion: a server response callback block
- 	*/
+extension VoucherifyValidation: ValidationApi {
+	
 	public func validateVoucher(code: String,
 								amount: Int? = nil,
 								completion: @escaping (_ response: Result<VoucherResponse>) -> Void) {
+		
 		var params = httpClient.getBaseQueryParams()
 		
 		params[HttpQueryParamName.code] = code as AnyObject?
@@ -37,19 +33,11 @@ public class Validation {
 			})
 	}
 	
-	/**
-	ValidateVoucher allows to validate a voucher with validation rules concerning products or variants (SKUs)
-
- 	- Parameters:
-		- code: a voucher's code which we want to validate
-	 	- amount:  an amount that is intended to be withdrawn from the voucher. Order amount have to be expressed in cents, as an integer
-	 	- orderItems: the validation rules concerning products or variants (SKUs)
-	 	- completion: a server response callback block
- 	*/
 	public func validateVoucher(code: String,
 								amount: Int? = nil,
 								orderItems: [OrderItem],
 								completion: @escaping (_ response: Result<VoucherResponse>) -> Void) {
+		
 		var params = httpClient.getBaseQueryParams()
 		
 		params[HttpQueryParamName.code] = code as AnyObject?
