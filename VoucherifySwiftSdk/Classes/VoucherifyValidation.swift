@@ -60,4 +60,21 @@ extension VoucherifyValidation: ValidationApi {
 				completion(strongSelf.httpClient.handleJsonResponse(response: response))
 			})
 	}
+	
+	public func validatePromotion(validationContext: PromotionValidationContext,
+								  completion: @escaping (Result<PromotionValidationResponse>) -> Void) {
+		
+		let params = httpClient.getBaseQueryParams()
+		
+		httpClient.request(
+			requestUrl: VoucherifyRouter.validatePromotions(params, validationContext) as URLRequestConvertible,
+			completion: {
+				[weak self] (response) in
+				guard let strongSelf = self else {
+					return
+				}
+				
+				completion(strongSelf.httpClient.handleJsonResponse(response: response))
+			})
+	}
 }

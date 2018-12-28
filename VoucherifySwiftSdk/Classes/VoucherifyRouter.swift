@@ -6,27 +6,35 @@ import ObjectMapper
 * Simple enum to define Voucherify clients routes
 */
 public enum VoucherifyRouter: URLRequestConvertible {
-
+    
     static let baseUrl = voucherifyServerEndpoint
-
-    case validateVoucher([String:AnyObject])
-    case redeemVoucher([String:AnyObject], VoucherRedemptionContext?)
-
+    
+    case validateVoucher([String: Any])
+    case validatePromotions([String: Any], PromotionValidationContext)
+    case redeemVoucher([String: Any], VoucherRedemptionContext?)
+    case redeemPromotion([String: Any], String, PromotionRedemptionContext?)
+    
     var method: Alamofire.HTTPMethod {
         switch self {
-        case .validateVoucher:
+        case .validateVoucher,
+             .validatePromotions:
             return .get
-        case .redeemVoucher:
+        case .redeemVoucher,
+             .redeemPromotion:
             return .post
         }
     }
-
-    var route: (path:String, parameters:[String:AnyObject]?) {
+    
+    var route: (path: String, parameters: [String: Any]?) {
         switch self {
         case .validateVoucher(let parameters):
             return ("/client/v1/validate", parameters);
+        case .validatePromotions(let parameters, _):
+            return ("/client/v1/promotions/validation", parameters)
         case .redeemVoucher(let parameters, _):
             return ("/client/v1/redeem", parameters)
+        case let .redeemPromotion(parameters, promotionTierId, _):
+            return ("/client/v1/promotions/tiers/\(promotionTierId)/redemption", parameters)
         }
     }
     
@@ -38,16 +46,30 @@ public enum VoucherifyRouter: URLRequestConvertible {
         switch self {
         case .validateVoucher(let parameters):
             return try Alamofire.URLEncoding.default.encode(urlRequest, with: parameters)
-
+        
         case .redeemVoucher(let parameters, let body):
             if let body = body {
                 let data = body.toJSONString(prettyPrint: true)!.data(using: String.Encoding.utf8)!
                 urlRequest.httpBody = data
             }
-        
-            return try Alamofire.URLEncoding.queryString.encode(urlRequest, with: parameters)
             
+            return try Alamofire.URLEncoding.queryString.encode(urlRequest, with: parameters)
+
+        case let .redeemPromotion(parameters, _, body):
+            if let body = body {
+                let data = body.toJSONString(prettyPrint: true)!.data(using: String.Encoding.utf8)!
+                urlRequest.httpBody = data
+            }
+    
+            return try Alamofire.URLEncoding.queryString.encode(urlRequest, with: parameters)
+        
+        case .validatePromotions(let parameters, let body):
+            var queryParameters = parameters
+    
+            queryParameters = queryParameters
+                .merging(body.asDictionary(), uniquingKeysWith: { (first, _) in first })
+            
+            return try Alamofire.URLEncoding.queryString.encode(urlRequest, with: queryParameters)
         }
     }
-    
 }

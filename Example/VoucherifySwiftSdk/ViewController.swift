@@ -28,6 +28,48 @@ class ViewController: UIViewController {
 //		}
 		
 		/*
+		* Validate a promotion
+		*/
+
+//		let orderItems: Array<OrderItem> = [
+//			OrderItem(productId: "prod_s3C0nDpr0DuC7", skuId: "sku_N8icTtWKKTV952", quantity: 2, price: 99999)
+//		]
+//
+//		var promotionValidationContext = PromotionValidationContext(
+//			customer: Customer(id: "cust_52fQPHaVzj0h0TGSMFHGWUFH", sourceId: "test_customer_id_1"),
+//			order: Order(amount: 3, items: orderItems),
+//			metadata: ["test": "test"])
+//
+//		client?.validations.validatePromotion(validationContext: promotionValidationContext) { (response: Result) in
+//			switch response {
+//			case .success(let response):
+//				debugPrint("OK")
+//			case .failure(let error):
+//				debugPrint("ERROR")
+//			}
+//
+//			debugPrint(response)
+//		}
+		
+		/*
+		* Redeem a promotion tier by its id
+		*/
+//		let orderItems: Array<OrderItem> = [
+//			OrderItem(productId: "prod_s3C0nDpr0DuC7", skuId: "sku_N8icTtWKKTV952", quantity: 2, price: 900000)
+//		]
+//
+//		var redeemContext = PromotionRedemptionContext()
+//		redeemContext.customer = Customer(id: "cust_52fQPHaVzj0h0TGSMFHGWUFH", sourceId: nil)
+//		redeemContext.order = Order(amount: 2, items: orderItems)
+//
+//		client?.redemptions.redeem(
+//			promotionTierId: "promo_Ws2wowdlnsmKHG2IWk1KxVGE",
+//			redeemContext: redeemContext) { (response) in
+//
+//			debugPrint(response ?? "")
+//		}
+		
+		/*
 		* Redeem voucher by its code
 		*/
 //        client?.redemptions.redeem(code: "test") { (response) in
