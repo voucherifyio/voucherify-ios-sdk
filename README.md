@@ -71,6 +71,13 @@ VoucherifyClient(
                                        completion: (_ response: Result<VoucherResponse>) -> Void)
 ```
 
+### [Validate Promotions]
+
+```swift
+    client.validations.validatePromotion(validationContext: promotionValidationContext,
+                                         completion: (_ response: Result<PromotionValidationResponse>) -> Void)
+```
+
 #### Redemptions API
 
 ### [Redeem Voucher]
@@ -81,11 +88,20 @@ VoucherifyClient(
                                completion: (_ response: Result<VoucherRedemptionResult>) -> Void)
 ```
 
+### [Redeem Promotions]
+
+```swift
+    client.redeemptions.redeem(promotionTierId: String,
+                               redeemContext: PromotionRedemptionContext,
+                               completion: @escaping (Result<PromotionTierRedemptionResult>) -> Void)
+```
+
 ## Contributing
 
 Bug reports and pull requests are welcome through [GitHub Issues](https://github.com/voucherifyio/voucherify-ios-sdk/issues).
 
 ## Changelog
+- **2019-01-02** - `3.1.0` - Add API methods to validate and redeem a promotion
 - **2018-12-15** - `3.0.0` - Client's API unification. Information about breaking changes can be find here: https://github.com/voucherifyio/voucherify-ios-sdk/wiki/Voucherify-3.0.0-Migration-Guide
 - **2018-12-04** - `2.0.0` - Swift 4.2
 - **2018-09-29** - `1.4.0` - Change minimum target version to 9.0 and update external dependency to the latest version
@@ -93,14 +109,16 @@ Bug reports and pull requests are welcome through [GitHub Issues](https://github
 - **2017-03-17** - `1.2.0` - Fix OrderItem mappings
 - **2017-03-16** - `1.1.0` - Update Order and OrderItem model
 - **2017-01-12** - `1.0.0` - Unify API with other voucherify SDKs
-- **2016-09-15** - `0.4.0` - redeem a voucher
-- **2016-08-08** - `0.3.0` - validate voucher with validation rules concerning products or variants (SKUs)
-- **2016-07-22** - `0.2.0` - validate gift voucher
-- **2016-07-08** - `0.1.0` - validate voucher by its code
+- **2016-09-15** - `0.4.0` - Redeem a voucher
+- **2016-08-08** - `0.3.0` - Validate voucher with validation rules concerning products or variants (SKUs)
+- **2016-07-22** - `0.2.0` - Validate gift voucher
+- **2016-07-08** - `0.1.0` - Validate voucher by its code
 
 ## License
 
 MIT. See the [LICENSE](https://github.com/voucherifyio/voucherify-ios-sdk/blob/master/LICENSE) file for details.
 
 [Validate Voucher]: https://docs.voucherify.io/reference#vouchers-validate
+[Validate Promotions]: https://docs.voucherify.io/reference#validate-promotions-1
 [Redeem Voucher]: https://docs.voucherify.io/reference#redeem-voucher-client-side
+[Redeem Promotions]: https://docs.voucherify.io/reference#redeem-promotion
