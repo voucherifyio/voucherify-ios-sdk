@@ -15,7 +15,7 @@ public struct PublishEntry: Mappable {
     mutating public func mapping(map: Map) {
         customer    <- map["customer"]
         channel     <- map["channel"]
-        publishedAt <- (map["published_at"], DateTransform())
+        publishedAt <- (map["published_at"], ISO8601DateTransform())
     }
 
 }

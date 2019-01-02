@@ -28,6 +28,16 @@ public protocol ValidationApi {
 	func validateVoucher(code: String,
 						 amount: Int?,
 						 completion: @escaping (_ response: Result<VoucherResponse>) -> Void)
+	
+	/**
+	ValidatePromotion allows to get valid promotions for a given customer and order
+
+	- Parameters:
+		- validationContext: a validation context which can contain information about customer and order
+	 	- completion: a server response callback block
+ 	*/
+	func validatePromotion(validationContext: PromotionValidationContext,
+						   completion: @escaping (_ response: Result<PromotionValidationResponse>) -> Void)
 }
 
 public extension ValidationApi {
