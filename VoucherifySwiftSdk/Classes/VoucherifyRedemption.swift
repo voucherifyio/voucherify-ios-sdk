@@ -31,4 +31,22 @@ extension VoucherifyRedemption: RedemptionApi {
 				completion(strongSelf.httpClient.handleJsonResponse(response: response))
 			})
 	}
+	
+	public func redeem(promotionTierId: String,
+					   redeemContext: PromotionRedemptionContext,
+					   completion: @escaping (Result<PromotionTierRedemptionResult>) -> Void) {
+		
+		let params = httpClient.getBaseQueryParams()
+		
+		httpClient.request(
+			requestUrl: VoucherifyRouter.redeemPromotion(params, promotionTierId, redeemContext) as URLRequestConvertible,
+			completion: {
+				[weak self] (response) in
+				guard let strongSelf = self else {
+					return
+				}
+				
+				completion(strongSelf.httpClient.handleJsonResponse(response: response))
+			})
+	}
 }

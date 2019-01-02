@@ -23,11 +23,11 @@ public class VoucherifyHttpClient {
         }
     }
 
-    internal func getBaseQueryParams() -> [String: AnyObject] {
-        var params = [String: AnyObject]()
+    internal func getBaseQueryParams() -> [String: Any] {
+        var params = [String: Any]()
 
-        params[HttpQueryParamName.trackingId] = self.trackingId as AnyObject?
-        params[HttpQueryParamName.channel] = configuration.userAgentClient as AnyObject?
+        params[HttpQueryParamName.trackingId] = self.trackingId as Any?
+        params[HttpQueryParamName.channel] = configuration.userAgentClient as Any?
 
         return params
     }
@@ -49,6 +49,7 @@ public class VoucherifyHttpClient {
         }
 
         var data: T?
+        
         if let json = json {
             data = Mapper<T>().map(JSONObject: json)
         }
