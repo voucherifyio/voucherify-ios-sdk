@@ -35,7 +35,7 @@ public struct VoucherRedemptionResult: Mappable {
 
     mutating public func mapping(map: Map) {
         id          <- map["id"]
-        date        <- (map["date"], DateTransform())
+        date        <- (map["date"], ISO8601DateTransform())
         object      <- map["object"]
         customerId  <- map["customer_id"]
         trackingId  <- map["tracking_id"]

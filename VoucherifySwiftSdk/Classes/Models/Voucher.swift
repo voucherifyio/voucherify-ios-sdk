@@ -55,8 +55,8 @@ public struct Voucher: Mappable {
         category        <- map["category"]
         discount        <- map["discount"]
         gift            <- map["gift"]
-        startDate       <- (map["start_date"], DateTransform())
-        expirationDate  <- (map["expiration_date"], DateTransform())
+        startDate       <- (map["start_date"], ISO8601DateTransform())
+        expirationDate  <- (map["expiration_date"], ISO8601DateTransform())
         active          <- map["active"]
         publish         <- map["publish"]
         redemption      <- map["redemption"]
