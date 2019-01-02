@@ -48,16 +48,14 @@ public enum VoucherifyRouter: URLRequestConvertible {
             return try Alamofire.URLEncoding.default.encode(urlRequest, with: parameters)
         
         case .redeemVoucher(let parameters, let body):
-            if let body = body {
-                let data = body.toJSONString(prettyPrint: true)!.data(using: String.Encoding.utf8)!
+            if let data = body?.toJSONString(prettyPrint: true)?.data(using: String.Encoding.utf8) {
                 urlRequest.httpBody = data
             }
             
             return try Alamofire.URLEncoding.queryString.encode(urlRequest, with: parameters)
 
         case let .redeemPromotion(parameters, _, body):
-            if let body = body {
-                let data = body.toJSONString(prettyPrint: true)!.data(using: String.Encoding.utf8)!
+            if let data = body?.toJSONString(prettyPrint: true)?.data(using: String.Encoding.utf8) {
                 urlRequest.httpBody = data
             }
     
