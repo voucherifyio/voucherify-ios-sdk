@@ -14,6 +14,20 @@ class ViewController: UIViewController {
 			trackingId: "swift-demo-test")
 		
 		/*
+		* List vouchers
+		*/
+//		client?.vouchers.list() { (response) in
+//			debugPrint(response ?? "")
+//		}
+		
+		/*
+		* List vouchers
+		*/
+//		client?.vouchers.list(customer: "cust_123456") { (response) in
+//			debugPrint(response ?? "")
+//		}
+		
+		/*
 		* Validate voucher by its code
 		*/
 //		client?.validations.validateVoucher(code: "test") { (response) in

@@ -54,6 +54,7 @@ public struct HttpQueryParamName {
     static let giftAmount = "amount"
     static let trackingId = "tracking_id"
     static let channel = "channel"
+    static let customer = "customer"
 
     static let productId = "product_id"
     static let skuId = "sku_id"
