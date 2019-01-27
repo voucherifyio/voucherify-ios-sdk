@@ -21,7 +21,7 @@ API:
 |
 <a href="#redemptions">Redemptions</a>
 |
-<a href="#voucher listing">Voucher Listing</a>
+<a href="#voucher listing">Voucher-Listing</a>
 </p>
 
 
