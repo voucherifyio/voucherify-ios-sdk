@@ -17,9 +17,11 @@
 
 <p align="center">
 API:
-<a href="#validations-api">Validations</a>
+<a href="#validations">Validations</a>
 |
-<a href="#redemptions-api">Redemptions</a>
+<a href="#redemptions">Redemptions</a>
+|
+<a href="#voucher listing">Voucher Listing</a>
 </p>
 
 
@@ -54,7 +56,17 @@ VoucherifyClient(
 
 ## API
 
-#### Validations API
+#### Voucher listing
+
+### [List Vouchers]
+
+```swift
+    client.vouchers.list(customer: String?,
+                      	 completion: @escaping (_ response: Result<VoucherList>) -> Void
+```
+
+
+#### Validations
 
 ### [Validate Voucher]
 
@@ -78,7 +90,7 @@ VoucherifyClient(
                                          completion: (_ response: Result<PromotionValidationResponse>) -> Void)
 ```
 
-#### Redemptions API
+#### Redemptions
 
 ### [Redeem Voucher]
 
@@ -122,3 +134,4 @@ MIT. See the [LICENSE](https://github.com/voucherifyio/voucherify-ios-sdk/blob/m
 [Validate Promotions]: https://docs.voucherify.io/reference#validate-promotions-1
 [Redeem Voucher]: https://docs.voucherify.io/reference#redeem-voucher-client-side
 [Redeem Promotions]: https://docs.voucherify.io/reference#redeem-promotion
+[List Vouchers]: https://docs.voucherify.io/v2018-08-01/reference#list-vouchers
