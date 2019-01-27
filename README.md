@@ -17,9 +17,11 @@
 
 <p align="center">
 API:
-<a href="#validations-api">Validations</a>
+<a href="#validations">Validations</a>
 |
-<a href="#redemptions-api">Redemptions</a>
+<a href="#redemptions">Redemptions</a>
+|
+<a href="#voucher-listing">Voucher Listing</a>
 </p>
 
 
@@ -54,7 +56,17 @@ VoucherifyClient(
 
 ## API
 
-#### Validations API
+#### Voucher listing
+
+### [List Vouchers]
+
+```swift
+    client.vouchers.list(customer: String?,
+                      	 completion: @escaping (_ response: Result<VoucherList>) -> Void
+```
+
+
+#### Validations
 
 ### [Validate Voucher]
 
@@ -78,7 +90,7 @@ VoucherifyClient(
                                          completion: (_ response: Result<PromotionValidationResponse>) -> Void)
 ```
 
-#### Redemptions API
+#### Redemptions
 
 ### [Redeem Voucher]
 
@@ -101,6 +113,7 @@ VoucherifyClient(
 Bug reports and pull requests are welcome through [GitHub Issues](https://github.com/voucherifyio/voucherify-ios-sdk/issues).
 
 ## Changelog
+- **2019-01-27** - `3.2.0` - Add API method to list vouchers
 - **2019-01-02** - `3.1.0` - Add API methods to validate and redeem a promotion
 - **2018-12-15** - `3.0.0` - Client's API unification. Information about breaking changes can be find here: https://github.com/voucherifyio/voucherify-ios-sdk/wiki/Voucherify-3.0.0-Migration-Guide
 - **2018-12-04** - `2.0.0` - Swift 4.2
@@ -122,3 +135,4 @@ MIT. See the [LICENSE](https://github.com/voucherifyio/voucherify-ios-sdk/blob/m
 [Validate Promotions]: https://docs.voucherify.io/reference#validate-promotions-1
 [Redeem Voucher]: https://docs.voucherify.io/reference#redeem-voucher-client-side
 [Redeem Promotions]: https://docs.voucherify.io/reference#redeem-promotion
+[List Vouchers]: https://docs.voucherify.io/v2018-08-01/reference#list-vouchers

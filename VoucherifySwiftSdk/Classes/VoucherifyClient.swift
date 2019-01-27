@@ -17,6 +17,10 @@ public class VoucherifyClient {
 		VoucherifyRedemption(httpClient: httpClient)
 	}()
 	
+	private lazy var voucher: VoucherApi = {
+		VoucherifyVoucher(httpClient: httpClient)
+	}()
+	
 	/**
 	 Initializes a new voucherify client using the provided parameters
 	
@@ -54,5 +58,9 @@ extension VoucherifyClient: Client {
 	
 	public var redemptions: RedemptionApi {
 		return redemption
+	}
+	
+	public var vouchers: VoucherApi {
+		return voucher
 	}
 }

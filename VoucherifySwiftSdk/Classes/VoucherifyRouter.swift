@@ -10,13 +10,15 @@ public enum VoucherifyRouter: URLRequestConvertible {
     static let baseUrl = voucherifyServerEndpoint
     
     case validateVoucher([String: Any])
+    case listVouchers([String: Any])
     case validatePromotions([String: Any], PromotionValidationContext)
     case redeemVoucher([String: Any], VoucherRedemptionContext?)
     case redeemPromotion([String: Any], String, PromotionRedemptionContext?)
     
     var method: Alamofire.HTTPMethod {
         switch self {
-        case .validateVoucher,
+        case .listVouchers,
+             .validateVoucher,
              .validatePromotions:
             return .get
         case .redeemVoucher,
@@ -27,6 +29,8 @@ public enum VoucherifyRouter: URLRequestConvertible {
     
     var route: (path: String, parameters: [String: Any]?) {
         switch self {
+        case .listVouchers(let parameters):
+            return ("/client/v1/vouchers", parameters);
         case .validateVoucher(let parameters):
             return ("/client/v1/validate", parameters);
         case .validatePromotions(let parameters, _):
@@ -44,6 +48,9 @@ public enum VoucherifyRouter: URLRequestConvertible {
         urlRequest.httpMethod = method.rawValue
         
         switch self {
+        case .listVouchers(let parameters):
+            return try Alamofire.URLEncoding.default.encode(urlRequest, with: parameters)
+            
         case .validateVoucher(let parameters):
             return try Alamofire.URLEncoding.default.encode(urlRequest, with: parameters)
         
