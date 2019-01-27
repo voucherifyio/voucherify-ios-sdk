@@ -113,6 +113,7 @@ VoucherifyClient(
 Bug reports and pull requests are welcome through [GitHub Issues](https://github.com/voucherifyio/voucherify-ios-sdk/issues).
 
 ## Changelog
+- **2019-01-27** - `3.2.0` - Add API method to list vouchers
 - **2019-01-02** - `3.1.0` - Add API methods to validate and redeem a promotion
 - **2018-12-15** - `3.0.0` - Client's API unification. Information about breaking changes can be find here: https://github.com/voucherifyio/voucherify-ios-sdk/wiki/Voucherify-3.0.0-Migration-Guide
 - **2018-12-04** - `2.0.0` - Swift 4.2
