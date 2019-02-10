@@ -16,9 +16,9 @@ class ViewController: UIViewController {
 		/*
 		* List vouchers
 		*/
-//		client?.vouchers.list() { (response) in
-//			debugPrint(response ?? "")
-//		}
+		client?.vouchers.list() { (response) in
+			debugPrint(response ?? "")
+		}
 		
 		/*
 		* List vouchers
