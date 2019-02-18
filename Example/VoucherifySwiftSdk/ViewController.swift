@@ -121,6 +121,13 @@ class ViewController: UIViewController {
 //            }
 //            debugPrint(response)
 //        }
+		
+		/*
+		* List promotion tiers
+		*/
+//		client?.promotions.list(isAvailable: true, limit: 2, page: 1) { (response) in
+//			debugPrint(response ?? "")
+//		}
 	}
 	
 }

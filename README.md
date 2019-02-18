@@ -22,6 +22,8 @@ API:
 <a href="#redemptions">Redemptions</a>
 |
 <a href="#voucher-listing">Voucher Listing</a>
+|
+<a href="#promotions">Promotions</a>
 </p>
 
 
@@ -108,6 +110,17 @@ VoucherifyClient(
                                completion: @escaping (Result<PromotionTierRedemptionResult>) -> Void)
 ```
 
+#### Promotions
+
+### [List Promotion Tiers]
+
+```swift
+    client.list(isAvailable: Bool = true,
+                limit: Int = 100,
+                page: Int = 1,
+                completion: @escaping (Result<PromotionTierPage>) -> Void)
+```
+
 ## Contributing
 
 Bug reports and pull requests are welcome through [GitHub Issues](https://github.com/voucherifyio/voucherify-ios-sdk/issues).
@@ -136,3 +149,4 @@ MIT. See the [LICENSE](https://github.com/voucherifyio/voucherify-ios-sdk/blob/m
 [Redeem Voucher]: https://docs.voucherify.io/reference#redeem-voucher-client-side
 [Redeem Promotions]: https://docs.voucherify.io/reference#redeem-promotion
 [List Vouchers]: https://docs.voucherify.io/v2018-08-01/reference#list-vouchers
+[List Promotion Tiers]: https://docs.voucherify.io/v2018-08-01/reference#list-promotion-tiers-client-side

@@ -7,5 +7,7 @@ public protocol Client {
 	var redemptions: RedemptionApi { get }
 	
 	var vouchers: VoucherApi { get }
+	
+	var promotions: PromotionApi { get }
 
 }
