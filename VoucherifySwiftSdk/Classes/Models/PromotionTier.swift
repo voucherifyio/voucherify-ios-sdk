@@ -11,19 +11,21 @@ public struct PromotionTier: Mappable {
 	public var condition: Condition?
 	public var action: Action?
 	public var metadata: Dictionary<String, Any>?
+	public var validationRuleAssignments: [ValidationRuleAssignmentsList] = []
 	
 	public init?(map: Map) {
 		mapping(map: map)
 	}
 	
 	mutating public func mapping(map: Map) {
-		id 			<- map["id"]
-		object 		<- map["object"]
-		name 		<- map["name"]
-		banner 		<- map["banner"]
-		condition 	<- map["condition"]
-		campaign 	<- map["campaign"]
-		action 		<- map["action"]
-		metadata 	<- map["metadata"]
+		id 							<- map["id"]
+		object 						<- map["object"]
+		name 						<- map["name"]
+		banner 						<- map["banner"]
+		condition 					<- map["condition"]
+		campaign 					<- map["campaign"]
+		action 						<- map["action"]
+		metadata 					<- map["metadata"]
+		validationRuleAssignments 	<- map["validation_rule_assignments"]
 	}
 }
