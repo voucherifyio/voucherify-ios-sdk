@@ -115,10 +115,10 @@ VoucherifyClient(
 ### [List Promotion Tiers]
 
 ```swift
-    client.list(isAvailable: Bool = true,
-                limit: Int = 100,
-                page: Int = 1,
-                completion: @escaping (Result<PromotionTierPage>) -> Void)
+    client.promotions.list(isAvailable: Bool = true,
+                           limit: Int = 100,
+                           page: Int = 1,
+                           completion: @escaping (Result<PromotionTierPage>) -> Void)
 ```
 
 ## Contributing
