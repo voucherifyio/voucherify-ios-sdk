@@ -56,6 +56,22 @@ VoucherifyClient(
     configuration: Configuration)
 ```
 
+#### API Endpoint
+
+Optionally, you can specify `server` configuration option if you want to use region-specific Voucherify cluster.
+
+```swift
+let configuration = Configuration()
+configuration.server = "https://<clusterId>.api.voucherify.io"
+
+VoucherifyClient(
+    clientId: YOUR-PUBLIC-CLIENT-APPLICATION-ID,
+    clientToken: YOUR-PUBLIC-CLIENT-APPLICATION-TOKEN,
+    origin: YOUR_ORIGIN,
+    trackingId: YOUR_TRACKING_ID,
+    configuration: configuration)
+```
+
 ## API
 
 #### Voucher listing
