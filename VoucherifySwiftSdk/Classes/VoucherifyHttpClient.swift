@@ -32,9 +32,9 @@ public class VoucherifyHttpClient {
         return params
     }
 
-    internal func handleJsonResponse<T: Mappable>(response: AFDataResponse<Any>) -> AFResult<T> {
+    internal func handleJsonResponse<T: Mappable>(response: AFDataResponse<Any>) -> Result<T, Error> {
         if let error = response.error {
-            return AFResult<T>.failure(error)
+            return Result<T, Error>.failure(error)
         }
 
         let json: AnyObject? = try! JSONSerialization.jsonObject(
@@ -43,8 +43,8 @@ public class VoucherifyHttpClient {
         if let errorJson = json {
             let error = Mapper<GeneralError>().map(JSONObject: errorJson)
 
-            if let error = error?.asAFError, error.responseCode != nil {
-                return AFResult<T>.failure(error)
+            if let error = error, error.code != nil {
+                return Result<T, Error>.failure(error)
             }
         }
 
@@ -54,7 +54,7 @@ public class VoucherifyHttpClient {
             data = Mapper<T>().map(JSONObject: json)
         }
 
-        return AFResult<T>.success(data!)
+        return Result<T, Error>.success(data!)
 
     }
 

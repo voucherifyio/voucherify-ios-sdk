@@ -15,7 +15,7 @@ extension VoucherifyPromotion: PromotionApi {
 	public func list(isAvailable: Bool,
 					 limit: Int,
 					 page: Int,
-					 completion: @escaping (AFResult<PromotionTierPage>) -> Void) {
+					 completion: @escaping (Result<PromotionTierPage, Error>) -> Void) {
 		
 		var params: [String: Any] = [:]
 		

@@ -13,7 +13,7 @@ public protocol RedemptionApi {
  	*/
 	func redeem(code: String,
 				redeemContext: VoucherRedemptionContext?,
-				completion: @escaping (_ response: AFResult<VoucherRedemptionResult>) -> Void)
+				completion: @escaping (_ response: Result<VoucherRedemptionResult, Error>) -> Void)
 	
 	/**
 	Redeem a promotion tier
@@ -25,7 +25,7 @@ public protocol RedemptionApi {
  	*/
 	func redeem(promotionTierId: String,
 				redeemContext: PromotionRedemptionContext,
-				completion: @escaping (_ response: AFResult<PromotionTierRedemptionResult>) -> Void)
+				completion: @escaping (_ response: Result<PromotionTierRedemptionResult, Error>) -> Void)
 }
 
 extension RedemptionApi {
@@ -39,7 +39,7 @@ extension RedemptionApi {
  	*/
 	public func redeem(code: String,
 					   redeemContext: VoucherRedemptionContext? = nil,
-					   completion: @escaping (_ response: AFResult<VoucherRedemptionResult>) -> Void) {
+					   completion: @escaping (_ response: Result<VoucherRedemptionResult, Error>) -> Void) {
 		
 		return redeem(code: code, redeemContext: redeemContext, completion: completion)
 	}
