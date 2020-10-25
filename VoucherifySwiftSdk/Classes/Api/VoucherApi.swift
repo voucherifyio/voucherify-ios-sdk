@@ -11,7 +11,7 @@ public protocol VoucherApi {
  		- completion: a server response callback block
 	*/
 	func list(customer: String?,
-			  completion: @escaping (_ response: Result<VoucherList>) -> Void)
+			  completion: @escaping (_ response: AFResult<VoucherList>) -> Void)
 }
 
 public extension VoucherApi {
@@ -24,7 +24,7 @@ public extension VoucherApi {
 		- completion: a server response callback block
 	*/
 	func list(customer: String? = nil,
-			  completion: @escaping (Result<VoucherList>) -> Void) {
+			  completion: @escaping (AFResult<VoucherList>) -> Void) {
 		
 		return list(customer: customer, completion: completion)
 	}

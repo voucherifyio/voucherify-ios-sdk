@@ -14,7 +14,7 @@ extension VoucherifyValidation: ValidationApi {
 	
 	public func validateVoucher(code: String,
 								amount: Int? = nil,
-								completion: @escaping (_ response: Result<VoucherResponse>) -> Void) {
+								completion: @escaping (_ response: AFResult<VoucherResponse>) -> Void) {
 		
 		var params = httpClient.getBaseQueryParams()
 		
@@ -36,7 +36,7 @@ extension VoucherifyValidation: ValidationApi {
 	public func validateVoucher(code: String,
 								amount: Int? = nil,
 								orderItems: [OrderItem],
-								completion: @escaping (_ response: Result<VoucherResponse>) -> Void) {
+								completion: @escaping (_ response: AFResult<VoucherResponse>) -> Void) {
 		
 		var params = httpClient.getBaseQueryParams()
 		
@@ -62,7 +62,7 @@ extension VoucherifyValidation: ValidationApi {
 	}
 	
 	public func validatePromotion(validationContext: PromotionValidationContext,
-								  completion: @escaping (Result<PromotionValidationResponse>) -> Void) {
+								  completion: @escaping (AFResult<PromotionValidationResponse>) -> Void) {
 		
 		let params = httpClient.getBaseQueryParams()
 		

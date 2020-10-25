@@ -14,7 +14,7 @@ extension VoucherifyRedemption: RedemptionApi {
 	
 	public func redeem(code: String,
 					   redeemContext: VoucherRedemptionContext? = nil,
-					   completion: @escaping (_ response: Result<VoucherRedemptionResult>) -> Void) {
+					   completion: @escaping (_ response: AFResult<VoucherRedemptionResult>) -> Void) {
 		
 		var params = httpClient.getBaseQueryParams()
 		
@@ -34,7 +34,7 @@ extension VoucherifyRedemption: RedemptionApi {
 	
 	public func redeem(promotionTierId: String,
 					   redeemContext: PromotionRedemptionContext,
-					   completion: @escaping (Result<PromotionTierRedemptionResult>) -> Void) {
+					   completion: @escaping (AFResult<PromotionTierRedemptionResult>) -> Void) {
 		
 		let params = httpClient.getBaseQueryParams()
 		

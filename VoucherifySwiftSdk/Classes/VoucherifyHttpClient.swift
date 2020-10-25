@@ -5,19 +5,19 @@ import ObjectMapper
 public class VoucherifyHttpClient {
 
     /// Alamofire's manager to perform HTTP calls
-    fileprivate let manager: Alamofire.SessionManager
+    fileprivate let manager: Alamofire.Session
 
     fileprivate let configuration: Configuration
 
     fileprivate let trackingId: String
 
-    internal init(sessionManager: Alamofire.SessionManager, configuration: Configuration, trackingId: String) {
+    internal init(sessionManager: Alamofire.Session, configuration: Configuration, trackingId: String) {
         self.manager = sessionManager
         self.configuration = configuration
         self.trackingId = trackingId
     }
 
-    internal func request(requestUrl: URLRequestConvertible, completion: @escaping (DataResponse<Any>) -> Void) {
+    internal func request(requestUrl: URLRequestConvertible, completion: @escaping (AFDataResponse<Any>) -> Void) {
         manager.request(requestUrl).responseJSON { response in
             completion(response)
         }
@@ -32,9 +32,9 @@ public class VoucherifyHttpClient {
         return params
     }
 
-    internal func handleJsonResponse<T: Mappable>(response: DataResponse<Any>) -> Result<T> {
+    internal func handleJsonResponse<T: Mappable>(response: AFDataResponse<Any>) -> AFResult<T> {
         if let error = response.error {
-            return Result<T>.failure(error)
+            return AFResult<T>.failure(error)
         }
 
         let json: AnyObject? = try! JSONSerialization.jsonObject(
@@ -43,8 +43,8 @@ public class VoucherifyHttpClient {
         if let errorJson = json {
             let error = Mapper<GeneralError>().map(JSONObject: errorJson)
 
-            if let error = error, error.code != nil {
-                return Result<T>.failure(error)
+            if let error = error?.asAFError, error.responseCode != nil {
+                return AFResult<T>.failure(error)
             }
         }
 
@@ -54,7 +54,7 @@ public class VoucherifyHttpClient {
             data = Mapper<T>().map(JSONObject: json)
         }
 
-        return Result<T>.success(data!)
+        return AFResult<T>.success(data!)
 
     }
 
