@@ -1,4 +1,3 @@
-import Alamofire
 import Foundation
 
 public protocol PromotionApi {
@@ -6,7 +5,7 @@ public protocol PromotionApi {
 	func list(isAvailable: Bool,
 			  limit: Int,
 			  page: Int,
-			  completion: @escaping (AFResult<PromotionTierPage>) -> Void)
+			  completion: @escaping (Result<PromotionTierPage, Error>) -> Void)
 }
 
 public extension PromotionApi {
@@ -14,7 +13,7 @@ public extension PromotionApi {
 	func list(isAvailable: Bool = true,
 			  limit: Int = 100,
 			  page: Int = 1,
-			  completion: @escaping (AFResult<PromotionTierPage>) -> Void) {
+			  completion: @escaping (Result<PromotionTierPage, Error>) -> Void) {
 		
 		return list(
 			isAvailable: isAvailable,
