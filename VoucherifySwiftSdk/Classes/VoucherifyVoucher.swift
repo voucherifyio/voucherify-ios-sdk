@@ -13,7 +13,7 @@ public class VoucherifyVoucher {
 extension VoucherifyVoucher: VoucherApi {
 	
 	public func list(customer: String?,
-					 completion: @escaping (Result<VoucherList>) -> Void) {
+					 completion: @escaping (Result<VoucherList, Error>) -> Void) {
 		
 		var params = httpClient.getBaseQueryParams()
 		
