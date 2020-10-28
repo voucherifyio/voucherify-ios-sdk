@@ -142,6 +142,7 @@ VoucherifyClient(
 Bug reports and pull requests are welcome through [GitHub Issues](https://github.com/voucherifyio/voucherify-ios-sdk/issues).
 
 ## Changelog
+- **2020-11-28** - `4.1.0` - Extend VoucherResponse by `campaign` and `campaignId` field, update dependencies, Swift 5.3
 - **2019-11-10** - `4.0.0` - Swift 5.1 and increased ios minimum deployment target to 10
 - **2019-02-18** - `3.3.0` - Add API method to list promotion tiers
 - **2019-01-27** - `3.2.0` - Add API method to list vouchers
