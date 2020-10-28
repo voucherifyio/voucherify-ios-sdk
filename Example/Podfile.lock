@@ -1,9 +1,9 @@
 PODS:
-  - Alamofire (4.9.1)
-  - ObjectMapper (3.4.1)
+  - Alamofire (5.3.0)
+  - ObjectMapper (4.2.0)
   - VoucherifySwiftSdk (4.0.0):
-    - Alamofire (~> 4.9.1)
-    - ObjectMapper (~> 3.4)
+    - Alamofire (~> 5.3.0)
+    - ObjectMapper (~> 4.2.0)
 
 DEPENDENCIES:
   - VoucherifySwiftSdk (from `../`)
@@ -18,10 +18,10 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
-  ObjectMapper: 5311bd50ca732930959e7ca1a2de43ab823a5ced
-  VoucherifySwiftSdk: 730242aed98cbab7ef0f08bd9b5388c85a05df72
+  Alamofire: 2c792affbdc2f18016e08fdbcacd60aebe1ba593
+  ObjectMapper: 1eb41f610210777375fa806bf161dc39fb832b81
+  VoucherifySwiftSdk: 4a89718546b7117fb617398ef490e8d2a0645b53
 
 PODFILE CHECKSUM: 847c74964c325a87f4a2923fcdcb59e8ec2db25a
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.10.0

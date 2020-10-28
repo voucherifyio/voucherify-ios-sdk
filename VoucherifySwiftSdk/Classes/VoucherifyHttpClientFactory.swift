@@ -11,7 +11,7 @@ enum VoucherifyHttpClientFactory {
 					   configuration: Configuration) -> VoucherifyHttpClient {
 		
 		let sessionConfiguration = URLSessionConfiguration.default
-		var additionalHeaders = Alamofire.SessionManager.defaultHTTPHeaders
+		var additionalHeaders = HTTPHeaders.default
 		
 		additionalHeaders[HttpHeader.httpHeaderContentType] = "application/json"
 		additionalHeaders[HttpHeader.httpHeaderClientId] = clientId
@@ -19,8 +19,8 @@ enum VoucherifyHttpClientFactory {
 		additionalHeaders[HttpHeader.httpHeaderOrigin] = origin.isEmpty ? voucherifyDefaultOrigin : origin
 		additionalHeaders[HttpHeader.httpHeaderChannel] = voucherifyChannelName
 		
-		sessionConfiguration.httpAdditionalHeaders = additionalHeaders
-		let manager = Alamofire.SessionManager(configuration: sessionConfiguration)
+		sessionConfiguration.headers = additionalHeaders
+		let manager = Alamofire.Session(configuration: sessionConfiguration)
 		
 		return VoucherifyHttpClient(
 			sessionManager: manager,

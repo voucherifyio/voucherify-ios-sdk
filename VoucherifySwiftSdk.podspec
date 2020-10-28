@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'VoucherifySwiftSdk'
-  s.version          = '4.0.0'
+  s.version          = '4.1.0'
   s.summary          = 'Swift SDK for Voucherify to validate a voucher on client side.'
 
   s.description      = <<-DESC
@@ -24,11 +24,11 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = '10.0'
 
-  s.swift_versions = ['5.0', '5.1']
+  s.swift_versions = ['5.0', '5.1', '5.2', '5.3']
 
   s.source_files = 'VoucherifySwiftSdk/Classes/**/*'
 
-  s.dependency 'Alamofire', '~> 4.9.1'
-  s.dependency 'ObjectMapper', '~> 3.4'
+  s.dependency 'Alamofire', '~> 5.3.0'
+  s.dependency 'ObjectMapper', '~> 4.2.0'
 
 end

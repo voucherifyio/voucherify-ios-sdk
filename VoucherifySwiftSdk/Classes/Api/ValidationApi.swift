@@ -1,4 +1,3 @@
-import Alamofire
 import Foundation
 
 public protocol ValidationApi {
@@ -15,7 +14,7 @@ public protocol ValidationApi {
 	func validateVoucher(code: String,
 						 amount: Int?,
 						 orderItems: [OrderItem],
-						 completion: @escaping (_ response: Result<VoucherResponse>) -> Void)
+						 completion: @escaping (_ response: Result<VoucherResponse, Error>) -> Void)
 	
 	/**
 	ValidateVoucher allows to validate a voucher based on its code and gift amount
@@ -27,7 +26,7 @@ public protocol ValidationApi {
  	*/
 	func validateVoucher(code: String,
 						 amount: Int?,
-						 completion: @escaping (_ response: Result<VoucherResponse>) -> Void)
+						 completion: @escaping (_ response: Result<VoucherResponse, Error>) -> Void)
 	
 	/**
 	ValidatePromotion allows to get valid promotions for a given customer and order
@@ -37,7 +36,7 @@ public protocol ValidationApi {
 	 	- completion: a server response callback block
  	*/
 	func validatePromotion(validationContext: PromotionValidationContext,
-						   completion: @escaping (_ response: Result<PromotionValidationResponse>) -> Void)
+						   completion: @escaping (_ response: Result<PromotionValidationResponse, Error>) -> Void)
 }
 
 public extension ValidationApi {
@@ -53,7 +52,7 @@ public extension ValidationApi {
 	func validateVoucher(code: String,
 						 amount: Int? = nil,
 						 orderItems: [OrderItem],
-						 completion: @escaping (_ response: Result<VoucherResponse>) -> Void) {
+						 completion: @escaping (_ response: Result<VoucherResponse, Error>) -> Void) {
 		
 		return validateVoucher(
 			code: code,
@@ -71,7 +70,7 @@ public extension ValidationApi {
  	*/
 	func validateVoucher(code: String,
 						 amount: Int? = nil,
-						 completion: @escaping (_ response: Result<VoucherResponse>) -> Void) {
+						 completion: @escaping (_ response: Result<VoucherResponse, Error>) -> Void) {
 		
 		return validateVoucher(
 			code: code,
